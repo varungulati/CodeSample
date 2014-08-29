@@ -1,0 +1,89 @@
+#---------------------------------------------------------
+# INTRODUCTION
+
+These files constitute a feature extractor designed specifically
+for extracting the below information from escort ads captured
+from Backpage's female escort section.
+
+The extractor is built on top of GATE's JAPE regular expression
+language. It combines a custome integer identification plugin
+with several JAPE pieces and a gazetteer (lookup table).
+
+#---------------------------------------------------------
+# FEATURES
+The following is a description of the features extracted,
+their definitions, and notes about notation. Many features
+may be multi-valued (e.g. multiple names or phone numbers
+referenced). In such cases, each value is ';' separated. The
+fields are ',' separated.
+
+It should be noted that many of these features have not been
+normalized. So, for example, blond and blonde may both 
+appear as hair colors, despite having the same interpretation.
+
+Perspective_1st - Count of 1st person pronouns
+Perspective_3rd - Count of 3rd person pronouns
+Name - Female first names
+Age - Age
+Cost - Dollar figure charged for various services. Notation is given as Dollars/Measure/Unit. Dollars represents a cost, Unit represents object of the cost (e.g. hours, minutes, short stay, special, etc.), Measure reprents the number of units (e.g. 30 minutes, 1 hour, hhr, etc.)
+Height_ft - Height to the nearest foot, multiple values correlate with multiple values of Height_in
+Height_in - Remaining inches of height, correlates with Height_ft
+Weight - Weight in lbs
+Cup - Cup size
+Chest - Chest measurement
+Waist - Waist measurement
+Hip - Hip measurement
+Ethnicity - Contry referenced ethnicity (e.g. Spanish, Russian, etc.)
+SkinColor - Color of skin
+EyeColor - Color of eyes
+HairColor - Color of hair
+Restriction_Type - [no,over] the type of restriction, i.e. "no black men", or "only men over 45."
+Restriction_Ethnicity - the ethnicity / skincolor restricted
+Restriction_Age - the threshold age value for the over restrictions
+PhoneNumber - phone number
+AreaCode_State - state associated with phone number's area code
+AreaCode_Cities - cities / locations associated with phone number's area code
+Email - email address
+Url - urls specifically referenced or linked to in the body
+Media - iframes and other foreign sorced content
+
+#---------------------------------------------------------
+# PERFORMANCE
+Below are performance measures for the above features, measured on
+1000 ads randomly selected ads adjudicated by hand.
+
+Features that are broken in to pieces such as height and restrictions, are
+lumped together for the purposes of this evaluation.
+
+Prevalence - the count of feature occurrence / number of ads
+Correct - the count of feature occurrences correctly extracted
+Partial - the count of feature occurrences extracted, albeit incorrectly
+Missing - the count of feature occurrences missed (i.e. false negatives)
+False pos - the count of falsely identified occurrences
+
+Feature, Prevalence, Correct, Partial, Missing, False Pos, Recall, Precision, F-measure
+Age         0.067    49       0        18       1          0.731   0.980      0.838
+Cost        0.55     489      0        61       17         0.889   0.966      0.926
+Email       0.012    12       0        0        0          1.000   1.000      1.000
+Ethnicity   0.29     254      0        36       8          0.876   0.969      0.920
+EyeColor    0.106    102      0        4        0          0.962   1.000      0.981
+HairColor   0.266    255      4        7        1          0.959   0.981      0.970
+Name        0.993    795      7        191      85         0.801   0.896      0.846
+PhoneNumber 1.077    1072     2        3        0          0.995   0.998      0.997
+Restriction 0.069    56       2        11       1          0.812   0.949      0.875
+SkinColor   0.105    102      0        3        3          0.971   0.971      0.971
+Url         0.047    41       5        1        2          0.872   0.854      0.863
+Height      0.236    227      3        6        2          0.962   0.978      0.970
+Measurement 0.206    182      16       8        0          0.883   0.919      0.901
+Weight      0.182    166      4        12       0          0.912   0.976      0.943
+
+#---------------------------------------------------------
+# USAGE
+
+Compile using 
+$ javac -classpath '.:./dependencies/*' TJBatchExtractor.java
+
+Run using
+$ java -classpath '.:./dependencies/*' TJBatchExtractor [num_threads] [textfile] [outfile]
+
+
