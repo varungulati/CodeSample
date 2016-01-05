@@ -1,4 +1,7 @@
 package LongestIncreasingSubsequence;
+
+import java.util.Arrays;
+
 // http://professorjava.weebly.com/longest-increasing-subsequence.html
 
 
@@ -27,12 +30,36 @@ public class LongestIncreasingSubsequence {
 				temp[i] = temp[i-1];
 			}
 		}
+		System.out.println(Arrays.toString(temp));
+		// Should print max of the array.
 		return temp[temp.length - 1];
+	}
+	public static int LIS(int[] arr) {
+		int[] temp = new int[arr.length];
+		temp[0] = 1;
+		int max = 0;
+		for(int i = 1; i < arr.length; i++) {
+			max = 0;
+			for(int j = i - 1; j >=0; j--) {
+				if(arr[i] > arr[j] && temp[j] > max) {
+					max = temp[j];
+				}
+			}
+			if(max != 0) {
+				temp[i] = max + 1;
+			} else {
+				temp[i] = temp[i - 1];
+			}
+		}
+		System.out.println(Arrays.toString(temp));
+		// Should print max of the array.
+		return temp[arr.length - 1];
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int arr[] = {0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15};
 		System.out.println(longestIncreasingSubsequence(arr));
+		System.out.println(LIS(arr));
 	}
 
 }

@@ -98,36 +98,19 @@ public class DynamicProgramming {
 
 		return lcsBetterHelper(s1, s2, arr);
 	}
+	// abc
+	// bcd
 	public static int lcsDP(String s1, String s2) {
-		int[][] arr = new int[s1.length() + 1][s2.length() + 1];
-		// Initailize array values to -1.
-		for(int[] row: arr) {
-			Arrays.fill(row, new Integer(-1));
-		}
-		// All rows should have 0 as default. No match when any one string is 0.
-		Arrays.fill(arr[0], new Integer(0));
-		// Set first column to 0.
-		for(int i = 0; i < s1.length() + 1; i++) {
-			arr[i][0] = 0;
-		}
-
-		for(int i = 1; i < s1.length() + 1; i++) {
-			for(int j = 1; j < s2.length() + 1; j++) {
-				if(s1.charAt(i - 1) == s2.charAt(j -1)) {
-					arr[i][j] = 1 + arr[i-1][j-1];
+		int arr[][] = new int[s1.length() + 1][s2.length() + 1];
+		for(int i = 1; i <= s1.length(); i++) {
+			for(int j = 1; j <= s2.length(); j++) {
+				if(s1.charAt(i-1) == s2.charAt(j-1)) {
+					arr[i][j] = arr[i-1][j-1] + 1;
 				} else {
 					arr[i][j] = Math.max(arr[i-1][j], arr[i][j-1]);
 				}
 			}
 		}
-//		System.out.println("=========");
-//		for(int i = 0; i <= s1.length(); i++) {
-//			for(int j = 0; j <= s2.length(); j++) {
-//				System.out.print(arr[i][j] + " ");
-//			}
-//			System.out.println();
-//		}
-//		System.out.println("=========");
 		return arr[s1.length()][s2.length()];
 	}
 	
@@ -213,6 +196,7 @@ public class DynamicProgramming {
 		}
 		return temp[temp.length - 1];
 	}
+
 	public static void main(String[] args) {
 //		System.out.println(fibonacciBetter(6));
 //		System.out.println(lcs("abcdefghi", "afdhaaa"));
@@ -233,5 +217,6 @@ public class DynamicProgramming {
 //		System.out.println(knapsackBetter(items, 15));
 		int[] arr = {1, 5, 8, 9, 10, 17, 17, 20};
 		System.out.println(maxValueRodPieces(arr));
+		System.out.println(lcsDP("apbcadcqer", "rasbtaucve"));
 	}
 }

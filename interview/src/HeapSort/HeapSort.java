@@ -13,10 +13,15 @@ public class HeapSort {
 				int temp = heap[p];
 				heap[p] = heap[c];
 				heap[c] = temp;
+			} else {
+				return;
 			}
 			c = p;
 			p = (c - 1)/2;
 		}
+	}
+	public void deleteMin(int[] heap) {
+		System.out.println(heap);
 	}
 	public void siftDown(int[] heap, int size) {
 		int p = 0, c = 1;

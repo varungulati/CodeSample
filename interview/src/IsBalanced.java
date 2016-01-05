@@ -33,10 +33,22 @@ public class IsBalanced {
 		System.out.println(minDepth(root));
 		return 1 >= maxDepth(root) - minDepth(root);
 	}
+	public static int isBalancedBetter(Trees root) {
+		if(root == null) {
+			return 0;
+		}
+		int leftHeight = isBalancedBetter(root.left);
+		int rightHeight = isBalancedBetter(root.right);
+		if(leftHeight - rightHeight > 1 || leftHeight == -1 || rightHeight == -1) {
+			return -1;
+		}
+		return Math.max(leftHeight, rightHeight) + 1;
+	}
 	public static void main(String[] args) {
 //		Trees root = new Trees(5, new Trees(4), new Trees(
 //			15, new Trees(12, new Trees(10), null), new Trees(18, new Trees(16), new Trees(20))));
-		Trees root = new Trees(5, new Trees(4), null);
-		System.out.println(isBalanced(root));;
+		Trees root = new Trees(5, new Trees(4, new Trees(3, null, null), null), null);
+		System.out.println(isBalanced(root));
+		System.out.println(isBalancedBetter(root));
 	}
 }
