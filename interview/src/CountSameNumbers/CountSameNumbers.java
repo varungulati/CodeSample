@@ -129,8 +129,38 @@ public class CountSameNumbers {
 		}
 		return binarySearchupper(arr, lo, mid - 1, num, found);
 	}
+	public static int countLeft(int[] arr, int num, int lo, int hi) {
+		if(lo > hi) {
+			return hi + 1;
+		}
+		
+		int mid = hi - (hi-lo)/2;
+		
+		if(arr[mid] == num) {
+			return countLeft(arr, num, lo, mid-1);
+		} else if(arr[mid] < num) {
+			return countLeft(arr, num, mid+1, hi);
+		} else {
+			return -1;
+		}
+	}
+	public static int countRight(int[] arr, int num, int lo, int hi) {
+		if(lo > hi) {
+			return hi;
+		}
+		
+		int mid = hi - (hi-lo)/2;
+		
+		if(arr[mid] == num) {
+			return countRight(arr, num, mid+1, hi);
+		} else if(arr[mid] > num) {
+			return countRight(arr, num, lo, mid-1);
+		} else {
+			return -1;
+		}
+	}
 	public static void main(String[] args) {
-		int arr[] = {5,5,5,5,5,5,5,5,5};
+		int arr[] = {1,2,3,4,5,5,5,5,5,5,5,5,5,6,7,8,9};
 		//15 when start from 1
 //		HashMap<Integer, Integer> result = countSameNumbers(arr);
 //		System.out.println(result);
@@ -145,6 +175,8 @@ public class CountSameNumbers {
 		int at = binarySearch(arr, 0, arr.length - 1, 5);
 		System.out.println(binarySearchlower(arr, 0, at - 1, 5, false));
 		System.out.println(binarySearchupper(arr, at + 1, arr.length - 1, 5, false));
+		System.out.println(countLeft(arr, 5, 0, at));
+		System.out.println(countRight(arr, 5, at, arr.length - 1));
 	}
 
 }
