@@ -55,6 +55,16 @@ public class DynamicProgramming {
 					lcs(s1, s2.substring(0, s2.length() - 1)));
 		}
 	}
+	public static int lcsNew(String s1, String s2) {
+		if(s1.length() == 0 || s2.length() == 0) {
+			return 0;
+		}
+		if(s1.charAt(0) == s2.charAt(0)) {
+			return 1 + lcsNew(s1.substring(1), s2.substring(1));
+		} else {
+			return Math.max(lcsNew(s1.substring(1), s2), lcsNew(s1, s2.substring(1)));
+		}
+	}
 	// Longest possible subsequence with array helper.
 	public static int lcsBetterHelper(String s1, String s2, int[][] arr) {
 		// If value not initialized then proceed.
@@ -217,6 +227,6 @@ public class DynamicProgramming {
 //		System.out.println(knapsackBetter(items, 15));
 		int[] arr = {1, 5, 8, 9, 10, 17, 17, 20};
 		System.out.println(maxValueRodPieces(arr));
-		System.out.println(lcsDP("apbcadcqer", "rasbtaucve"));
+		System.out.println(lcsNew("apbcadcqer", "rasbtaucve"));
 	}
 }

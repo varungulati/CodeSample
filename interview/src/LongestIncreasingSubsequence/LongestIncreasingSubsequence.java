@@ -34,6 +34,21 @@ public class LongestIncreasingSubsequence {
 		// Should print max of the array.
 		return temp[temp.length - 1];
 	}
+	public static int lisLatest(int arr[]) {
+		int counter[] = new int[arr.length];
+		for (int i = 0; i < arr.length; i++) {
+			int currMax = Integer.MIN_VALUE;
+			for (int j = 0; j <= i; j++) {
+				if(arr[i] >= arr[j]) {
+					if(currMax < counter[j]) {
+						currMax = counter[j];
+					}
+				}
+			}
+			counter[i] = currMax + 1;
+		}
+		return counter[arr.length -1];
+	}
 	public static int LIS(int[] arr) {
 		int[] temp = new int[arr.length];
 		temp[0] = 1;
@@ -59,7 +74,7 @@ public class LongestIncreasingSubsequence {
 		// TODO Auto-generated method stub
 		int arr[] = {0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15};
 		System.out.println(longestIncreasingSubsequence(arr));
-		System.out.println(LIS(arr));
+		System.out.println(lisLatest(arr));
 	}
 
 }
