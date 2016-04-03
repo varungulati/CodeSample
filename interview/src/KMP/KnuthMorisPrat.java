@@ -53,17 +53,54 @@ public class KnuthMorisPrat {
 		}
 	}
 
+	public static void KMP(String str, String pat) {
+		int arr[] = new int[pat.length()];
+		arr[0] = 0;
+		for (int i = 1, j = 0; i < pat.length(); i++) {
+			if(pat.charAt(i) == pat.charAt(j)) {
+				arr[i] = arr[i-1] + 1;
+				j++;
+			} else {
+				if (j == 0) {
+					j = 0;
+				} else {
+					j = arr[j-1];
+				}
+				arr[i] = 0;
+			}
+		}
+		System.out.println(Arrays.toString(arr));
+		for (int i = 0, j = 0; i < str.length(); i++) {
+			if (str.charAt(i) == pat.charAt(j)) {
+				if (j == pat.length() - 1) {
+					System.out.println(i - j + " ");
+					j = arr[j];
+					continue;
+				} 
+				j++;
+			} else {
+				if (j == 0) {
+					j = 0;
+				} else {
+					j = arr[j-1];
+					i--;
+				}
+			}
+			
+		}
+	}
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-//		String str = "AABAACAADAABAABAA";
-//		String pat = "AABAA";
-		String str = "THIS IS A TEST TEXT";
-		String pat = "TEST";
+		String str = "AABAACAADAABAABAAJ";
+		String pat = "AABAA";
+//		String str = "THIS IS A TEST TEXT";
+//		String pat = "TEST";
 		System.out.println(Arrays.toString(presuff(pat)));
 		finder(str, pat);
+		KMP(str, pat);
 	}
 
 }

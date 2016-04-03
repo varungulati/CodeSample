@@ -55,6 +55,22 @@ public class DynamicProgramming {
 					lcs(s1, s2.substring(0, s2.length() - 1)));
 		}
 	}
+	public static int editDistance(String s1, String s2) {
+		if(s1.length() == 0) {
+			return s2.length();
+		}
+		if(s2.length() == 0) {
+			return s1.length();
+		}
+		if(s1.charAt(0) == s2.charAt(0)) {
+			return editDistance(s1.substring(1), s2.substring(1));
+		} else {
+			return 1 + Math.min(
+					editDistance(s1.substring(1), s2.substring(1)),
+					Math.min(editDistance(s1.substring(1), s2),
+							editDistance(s1, s2.substring(1))));
+		}
+	}
 	public static int lcsNew(String s1, String s2) {
 		if(s1.length() == 0 || s2.length() == 0) {
 			return 0;
@@ -228,5 +244,7 @@ public class DynamicProgramming {
 		int[] arr = {1, 5, 8, 9, 10, 17, 17, 20};
 		System.out.println(maxValueRodPieces(arr));
 		System.out.println(lcsNew("apbcadcqer", "rasbtaucve"));
+		System.out.println(editDistance("sunday", "saturday"));
+		System.out.println(editDistance("geek", "gesek"));
 	}
 }

@@ -63,11 +63,23 @@ public class SubstringCheck {
 			i++;
 		}
 	}
+	public static int LCS(String str, String pat) {
+		if (pat.length() == 0 || str.length() == 0) {
+			return 0;
+		}
+		if (str.charAt(0) == pat.charAt(0)) {
+			return 1 + LCS(str.substring(1), pat.substring(1));
+		} else {
+			return Math.max(LCS(str.substring(1), pat), LCS(str, pat.substring(1)));
+		}
+	}
 	public static void main(String[] args) {
 		String s = "lklkalklkask";
 		String sub = "lk";
 //		substringCheck(s, sub);
 		substringKMP(s, sub);
+		// String is found when LCS(s, sub) == sub.length()
+		System.out.println(LCS(s, sub));
 	}
 
 }

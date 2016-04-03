@@ -172,4 +172,46 @@ public class Tree {
 						sorted, mid + 1, hi));
 		return temp;
 	}
+	public static boolean pathFinder(Node node, int search) {
+		if(node == null) {
+			return false;
+		}
+		if (node.data == search) {
+			System.out.println(node.data);
+			return true;
+		}
+		boolean left = false, right = false;
+		left = pathFinder(node.left, search);
+		if(left) {
+			System.out.println(node.data);
+		}
+		right = pathFinder(node.right, search);
+		if(right) {
+			System.out.println(node.data);
+		}
+		return left || right;
+	}
+	public static int level(Node root, int n, int height) {
+		if(root == null)
+			return -1;
+		if(root.data == n) 
+			return height;
+		return Math.max(level(root.left, n, height + 1), level(root.right, n, height + 1));
+	}
+	public static void mirror(Node root) {
+		if(root == null) return;
+		root.left = mirrorHelper(root.right);
+	}
+
+	private static Node mirrorHelper(Node root) {
+		if(root == null || isLeaf(root)) return root;
+		Node temp = new Node(root.data, null, null);
+		temp.left = mirrorHelper(root.right);
+		temp.right = mirrorHelper(root.left);
+		return temp;
+	}
+
+	private static boolean isLeaf(Node node) {
+		return node.left == null && node.right == null;
+	}	
 }
