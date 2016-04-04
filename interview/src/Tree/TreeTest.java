@@ -19,9 +19,11 @@ public class TreeTest {
 		System.out.println();
 		t.pathFinder(t.head, 10);
 		System.out.println(t.level(t.head, 10, 0));
-		t.mirror(t.head);
-		System.out.println(t.head.data);
-		System.out.println(t.head.left.left.data);
-		System.out.println(t.head.right.right.data);
+//		t.mirror(t.head);
+//		System.out.println(t.head.data);
+//		System.out.println(t.head.left.left.data);
+//		System.out.println(t.head.right.right.data);
+		System.out.println(t.LCA(t.head, new Node(30, null, null), new Node(6, null,null)).data);
+		System.out.println(t.diam(root));
 	}
 }

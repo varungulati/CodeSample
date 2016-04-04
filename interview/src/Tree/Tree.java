@@ -214,4 +214,41 @@ public class Tree {
 	private static boolean isLeaf(Node node) {
 		return node.left == null && node.right == null;
 	}	
+	public static Node LCA(Node root, Node n1, Node n2) {
+		if (root == null) {
+			return root;
+		}
+		if (root.data == n1.data) {
+			return n1;
+		}
+		if (root.data == n2.data) {
+			return n2;
+		}
+		Node left = LCA(root.left, n1, n2);
+		Node right = LCA(root.right, n1, n2);
+		if (left != null && right != null) {
+			return root;
+		}
+		return left == null ? right : left;
+	}
+	public static class Height {
+		int height;
+	}
+	public static int diamHelper(Node root, Height h) {
+		if(root == null) {
+			h.height = 0;
+			return 0;
+		}
+		Height lh = new Height();
+		Height rh = new Height();
+		lh.height = h.height + 1;
+		rh.height = h.height + 1;
+		int ldiam = diamHelper(root.left, lh);
+		int rdiam = diamHelper(root.right, rh);
+		h.height = 1 + Math.max(lh.height, rh.height);
+		return Math.max(1 + lh.height + rh.height, Math.max(ldiam, rdiam));		
+	}
+	public static int diam(Node root) {
+		return diamHelper(root, new Height());
+	}
 }
