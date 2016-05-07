@@ -1,0 +1,97 @@
+Difference between abstract class and interface - 
+
+1. A class can extend only one abstract class but can implement multiple interfaces because multiple inheritance is not allowed in Java.
+
+          interface A {
+            
+          }
+          interface B {
+            
+          }
+          abstract class C {
+            
+          }
+          abstract class D {
+            
+          }
+          // this is allowed
+          public class AAA extends C implements A , B{
+          
+          }
+
+2. Abstract class can have defined/un-defined methods. In an interface all methods are not defined (just declared).
+  
+          interface A {
+            public void a();
+          }
+          abstract class C {
+            public abstract void c();
+            public void c1() {
+              System.out.println("Defined.");
+            }
+          }
+          public class AAA extends C implements A {
+            public void a() {}
+            public void c() {}
+          }
+            
+3. All methods in interface are public. Abstract class can have private methods.
+
+          interface A {
+            public void a();
+          }
+          abstract class C {
+            public abstract void c();
+            private void c1() {
+              System.out.println("Defined.");
+            }
+          }
+          public class AAA extends C implements A {
+            public void a() {}
+            public void c() {}
+          }
+
+When to use which ?
+1. Use interface at the top level. It is a good design practice. Eg base class may extend an abstract class which implements interface.
+          interface A {
+            public void a();
+          }
+          abstract class C implements A {
+            public abstract void c();
+          }
+          public class AAA extends C {
+            public void a() {}
+            public void c() {}
+          }
+
+2. Use Abstract classes when some behavior is to be defined for all base classes
+   Both Merc and BMW has same functionality for Start. Use abstract class.
+   
+          abstract class Car {
+            public abstract void c();
+            public void Start() {
+              System.out.println("Engine Start");
+            }
+          }
+          class BMW extends Car {
+          }
+          class Merc extends Car {  
+          }
+          
+3. Use interface when every concrete class has to define its own behavior.
+
+          interface Burger {
+            public void cook();
+          }
+          class American implements Burger {
+            public void cook() {
+              System.out.println("American burger");
+            }
+          }
+          class Italian implements Burger { 
+            public void cook() {
+              System.out.println("Italian burger");
+            }
+          }
+
+ 

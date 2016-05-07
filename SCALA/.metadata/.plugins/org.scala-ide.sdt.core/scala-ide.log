@@ -1,0 +1,25 @@
+2015-03-15 19:57:11,693  WARN [Worker-6] - ScalaProject - Project Test has platform default sourceLevel.
+2015-03-15 19:57:11,698  WARN [Worker-6] - ScalaProject - Project Test runs on platform default installation.
+2015-03-15 19:58:21,725  WARN [Worker-0] - ScalaProject - Project Test has platform default sourceLevel.
+2015-03-15 19:58:21,735  WARN [Worker-0] - ScalaProject - Project Test runs on platform default installation.
+2015-03-15 19:59:07,084 ERROR [Text Viewer Hover Presenter] - IScalaPresentationCompiler$ - Ignoring InterruptException
+2015-03-15 19:59:07,101 ERROR [Text Viewer Hover Presenter] - IScalaPresentationCompiler$ - Ignoring InterruptException
+2015-03-15 19:59:07,102 ERROR [Text Viewer Hover Presenter] - IScalaPresentationCompiler$ - Ignoring InterruptException
+2015-03-15 19:59:07,103 ERROR [Text Viewer Hover Presenter] - IScalaPresentationCompiler$ - Ignoring InterruptException
+2015-03-15 19:59:19,400  WARN [Worker-5] - ScalaProject - Project Test has platform default sourceLevel.
+2015-03-15 19:59:19,401  WARN [Worker-5] - ScalaProject - Project Test runs on platform default installation.
+2015-03-15 19:59:51,244  WARN [Worker-4] - ScalaProject - Project Test has platform default sourceLevel.
+2015-03-15 19:59:51,244  WARN [Worker-4] - ScalaProject - Project Test runs on platform default installation.
+2015-03-15 20:01:57,672  WARN [Worker-8] - ScalaProject - Project Test has platform default sourceLevel.
+2015-03-15 20:01:57,672  WARN [Worker-8] - ScalaProject - Project Test runs on platform default installation.
+2015-03-15 20:02:01,008  WARN [Worker-8] - ScalaProject - Project Test has platform default sourceLevel.
+2015-03-15 20:02:01,009  WARN [Worker-8] - ScalaProject - Project Test runs on platform default installation.
+2015-03-15 20:02:08,659 ERROR [Worker-9] - System.err - SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2015-03-15 20:02:08,659 ERROR [Worker-9] - System.err - SLF4J: Defaulting to no-operation (NOP) logger implementation
+2015-03-15 20:02:08,659 ERROR [Worker-9] - System.err - SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2015-03-15 20:02:24,501  WARN [Worker-8] - ScalaProject - Project Test has platform default sourceLevel.
+2015-03-15 20:02:24,502  WARN [Worker-8] - ScalaProject - Project Test runs on platform default installation.
+2015-04-04 00:21:11,661  WARN [Worker-0] - ScalaProject - Project Test has platform default sourceLevel.
+2015-04-04 00:21:11,687  WARN [Worker-0] - ScalaProject - Project Test runs on platform default installation.
+2015-04-04 00:21:14,256  WARN [Worker-0] - ScalaProject - Project Test has platform default sourceLevel.
+2015-04-04 00:21:14,257  WARN [Worker-0] - ScalaProject - Project Test runs on platform default installation.

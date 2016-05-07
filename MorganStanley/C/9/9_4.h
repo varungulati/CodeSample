@@ -1,0 +1,2 @@
+int getGlobal();
+int getLocal();
