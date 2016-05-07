@@ -173,8 +173,8 @@ public class CountSameNumbers {
 		System.out.println(GetOccurance(arr, 4, 0, arr.length - 1));
 		System.out.println(binarySearch(arr, 0, arr.length - 1, 5));
 		int at = binarySearch(arr, 0, arr.length - 1, 5);
-		System.out.println(binarySearchlower(arr, 0, at - 1, 5, false));
-		System.out.println(binarySearchupper(arr, at + 1, arr.length - 1, 5, false));
+//		System.out.println(binarySearchlower(arr, 0, at - 1, 5, false));
+//		System.out.println(binarySearchupper(arr, at + 1, arr.length - 1, 5, false));
 		System.out.println(countLeft(arr, 5, 0, at));
 		System.out.println(countRight(arr, 5, at, arr.length - 1));
 	}
