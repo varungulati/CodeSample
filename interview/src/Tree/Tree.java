@@ -251,4 +251,26 @@ public class Tree {
 	public static int diam(Node root) {
 		return diamHelper(root, new Height());
 	}
+	public static Node nextInorderSuccessor(Node root, Node node) {
+		if(node.right == null) {
+			Node temp = root;
+			while(true) {
+				if(temp == node) return null;
+				if(temp.data > node.data) {
+					if(temp.left == null || temp.left.data <= node.data) return temp;
+					temp = temp.left;
+				} else {
+					temp = temp.right;
+				}
+				if(temp == null) return null;
+			}
+		} else {
+			Node temp = node;
+			temp = node.right;
+			while(temp.left != null) {
+				temp = temp.left;
+			}
+			return temp;
+		}
+	}
 }
