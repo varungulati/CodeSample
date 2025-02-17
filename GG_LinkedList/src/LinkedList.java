@@ -1,3 +1,4 @@
+package gg.linkedlist;
 
 public class LinkedList {
 	int data;
